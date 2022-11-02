@@ -1,0 +1,12 @@
+html{
+  display:none;
+}
+[id^="page-"]{
+  max-width:800px;
+  min-height:100vh;
+  margin-right:auto;
+  margin-left:auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

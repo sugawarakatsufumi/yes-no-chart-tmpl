@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>SPA風 YES-NOチャートTMPL</title>
+  <script>
+    history.replaceState(null, null, null);
+    let statusArray = ['DOMContentLoaded','popstate'];
+    for(let m=0; m<statusArray.length; m++){
+      window.addEventListener(statusArray[m], function(){
+        document.querySelector('html').style.display='block';
+        if(location.hash){
+          change_page(location.hash);
+        }else{
+          change_page('#page-start');
+        }
+        let aElms = document.querySelectorAll('a');
+        for(let i=0; i<aElms.length; i++){
+          aElms[i].addEventListener('click', function(){
+            change_page(this.getAttribute("href"))
+          })
+        }
+      })
+    }
+    function change_page(pageId){
+      let pageElms = document.querySelectorAll('[id^="page-"]')
+      for(let i=0;i<pageElms.length; i++){
+        pageElms[i].classList.remove('d-block');
+        pageElms[i].classList.add('d-none');
+      }
+      document.querySelector(pageId).classList.remove('d-none');
+      document.querySelector(pageId).classList.add('d-block');
+    }
+  </script>
+</head>
+<body>
+<div class="shadow-sm">
+  <header class="header container d-flex align-items-center p-3" style="max-width:800px">
+    <a href="./index.html" class="d-block w-25">ロゴとかいれる</a>
+    <h1 class="fs-6 m-0 ms-auto fw-bold"><small>h1説明文はこちらに</small></h1>
+  </header>
+</div>
+<section id="page-start">
+  <div class="container ps-3 pe-3 pt-5">
+    <h2 class="mb-5 text-center lh-base fw-bold">すきな食べ物は</h2>
+    <div class="row">
+      <div class="col-12 col-lg-6"><a href="#page-case-mikan" class="btn btn-primary bg-gradient rounded-pill d-block py-4 mb-4 text-white">みかん</a></div>
+      <div class="col-12 col-lg-6"><a href="#page-case-ringo" class="btn btn-primary bg-gradient rounded-pill d-block py-4 mb-4 text-white">りんご</a></div>
+    </div>
+  </div>
+</section>
+<section id="page-case-mikan" class="d-none">
+  <div class="container ps-3 pe-3 pt-5">
+    <h2 class="mb-5 text-center lh-base fw-bold">さらにすきな食べ物は(みかんからきた)</h2>
+    <div class="row">
+      <div class="col-12 col-lg-6"><a href="#page-has-red" class="btn btn-primary bg-gradient rounded-pill d-block py-4 mb-4 text-white">いちご</a></div>
+      <div class="col-12 col-lg-6"><a href="#page-ans-orange" class="btn btn-primary bg-gradient rounded-pill d-block py-4 mb-4 text-white">マンゴー</a></div>
+    </div>
+  </div>
+</section>
+<section id="page-case-ringo" class="d-none">
+  <div class="container ps-3 pe-3 pt-5">
+    <h2 class="mb-5 text-center lh-base fw-bold">さらにすきな食べ物は(りんごからきた)</h2>
+    <div class="row">
+      <div class="col-12 col-lg-6"><a href="#page-ans-red" class="btn btn-primary bg-gradient rounded-pill d-block py-4 mb-4 text-white">いちご</a></div>
+      <div class="col-12 col-lg-6"><a href="#page-ans-orange" class="btn btn-primary bg-gradient rounded-pill d-block py-4 mb-4 text-white">マンゴー</a></div>
+    </div>
+  </div>
+</section>
+<section id="page-ans-orange" class="d-none">
+  <div class="container ps-3 pe-3 pt-5">
+    <h2 class="mb-5 text-center lh-base fw-bold">オレンジ色が好きなんですね</h2>
+  </div>
+</section>
+<section id="page-ans-red" class="d-none">
+  <div class="container ps-3 pe-3 pt-5">
+    <h2 class="mb-5 text-center lh-base fw-bold">レッドが好きなですね</h2>
+  </div>
+</section>
+
+<footer class="bg-dark p-5 text-center">
+  <div class="text-white">
+    フッター
+  </div>
+</footer>
+</body>
+</html>
