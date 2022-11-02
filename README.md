@@ -1,2 +1,2 @@
-# yes-no-chart-tmpl
-バニラJS、spa風yes-noチャート
+# SPA風 YES-NOチャートテンプレ
+バニラJS、シンプルなspa風yes-noチャート
